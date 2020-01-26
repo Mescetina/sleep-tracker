@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleepiness</ion-title>
+    <ion-button size="small" slot="end" fill="clear" (click)="showPicker()"
+      *ngIf="sleepinessData.length > 0">
+      <ion-icon name="add" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="sleepinessData.length === 0">
+    <ion-button size="large" fill="clear" (click)="showPicker()">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-button>
+    <br>Log how you are feeling right now!<br>
+  </div>
+  <ion-list lines="none" *ngFor="let entry of sleepinessData">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ entry.dateString() }}</ion-card-title>
+        <ion-button size="small" fill="clear" (click)="onButtonClicked(entry)">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-card-header>
+      <ion-card-content>
+        {{ entry.summaryString() }}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

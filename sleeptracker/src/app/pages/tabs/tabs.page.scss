@@ -1,0 +1,12 @@
+ion-tab-bar {
+  --background: black;
+  --ion-color-base: black !important;
+}
+
+ion-icon {
+  color: rgb(150, 150, 150);
+}
+
+.tab-selected ion-icon {
+  color: white;
+}

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleep Time</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div>
+    <ion-label>
+      {{ displayTime.getHours() + ':' + (displayTime.getMinutes() < 10 ?
+         '0' + displayTime.getMinutes() : displayTime.getMinutes()) }}
+    </ion-label>
+  </div>
+  <div class="ion-text-uppercase">
+    <ion-button color="light" fill="outline" (click)="onButtonClicked()">
+      {{ tracking ? 'Wake Up' : 'Go To Bed' }}
+    </ion-button>
+  </div>
+</ion-content>

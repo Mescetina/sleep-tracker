@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleep Data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    {{ viewTitle }}
+    <ion-button slot="end" fill="clear" (click)="onTodaySelected()">
+      <ion-icon name="calendar" size="large"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <div>
+    <calendar
+      [monthviewEventDetailTemplate]="template"
+      [eventSource]="eventSource"
+      [calendarMode]="'month'"
+      [currentDate]="currentDate"
+      (onTitleChanged)="onViewTitleChanged($event)">
+    </calendar>
+  </div>
+</ion-content>
+
+<ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
+  let-noEventsLabel="noEventsLabel">
+  <ion-item id="event-detail">
+    {{ selectedDate.events.length > 0 ? selectedDate.events[selectedDate.events.length - 1].date + ': ' +
+        selectedDate.events[selectedDate.events.length - 1].summary : 'No Records' }}
+    <ion-button *ngIf="selectedDate.events.length > 0" size="small" slot="end" fill="clear"
+      (click)="onButtonClicked(selectedDate.events[selectedDate.events.length - 1])">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ng-template>
